@@ -15,4 +15,5 @@ function onFormSubmit(event) {
     console.log(formData);
     event.currentTarget.reset();
     // return new FormData(event.currentTarget);
+  return formData;
 }
