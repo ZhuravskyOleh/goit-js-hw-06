@@ -6,16 +6,15 @@ dataIn.addEventListener('blur', onInputBlur);
 function onInputBlur() {
    const value = dataIn.value.trim();
    const dataLength = dataIn.dataset.length;
-
-   validateInput(value, dataLength, dataIn);     
+   if (value.length === Number(dataLength)) {
+     validateInput('valid', 'invalid');
+   } else {
+     validateInput('invalid', 'valid');
+   }
 };
 
-function validateInput(value, dataLength, inputElement) {
-  if (value.length === Number(dataLength)) {
-    inputElement.classList.remove('invalid');
-    inputElement.classList.add('valid');
-  } else {
-    inputElement.classList.remove('valid');
-    inputElement.classList.add('invalid');
-  }
+function validateInput(data1, data2) {
+  const inputElement = dataIn;
+  inputElement.classList.add(data1);
+  inputElement.classList.remove(data2);
 }
